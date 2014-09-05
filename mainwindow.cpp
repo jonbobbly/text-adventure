@@ -118,3 +118,24 @@ void MainWindow::on_btnEast_clicked()
 	ui->statusBar->showMessage( theGame.parseWorldInput("east"), 5000 );
 	if(theGame.thePlayer.hasMoved()) updateLocation();
 }
+
+void MainWindow::on_btnInventory_clicked()
+{
+	ui->stackedWidget->setCurrentIndex(MainWindow::INVENTORY);
+}
+
+void MainWindow::on_btnSave_clicked()
+{
+	QString file = QFileDialog::getSaveFileName(this, "Save Game", "", "Save files (*.sav)");
+	ui->statusBar->showMessage( theGame.Save(file), 5000 );
+}
+
+void MainWindow::on_btnLoad_clicked()
+{
+		QString file = QFileDialog::getOpenFileName(this,"Save Game", "", "Save files (*.sav)");
+		QString msg = theGame.Load(file);
+		ui->playerInventory->setModel(theGame.playerInvenModel());
+		//ui->playerInventory->setModel(theGame.thePlayer.inven.model);
+		updateLocation();
+		ui->statusBar->showMessage( msg, 5000);
+}

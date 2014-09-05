@@ -35,6 +35,12 @@ class MainWindow : public QMainWindow
 
 		void on_btnEast_clicked();
 
+		void on_btnInventory_clicked();
+
+		void on_btnSave_clicked();
+
+		void on_btnLoad_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 		Game theGame;
