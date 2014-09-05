@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFile>
+#include <QFileDialog>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -45,9 +46,11 @@ void MainWindow::on_worldInput_returnPressed()
 		ui->stackedWidget->setCurrentIndex(MainWindow::INVENTORY);
 		ui->invenInput->setFocus();
 	} else if(Text == "save"){
-		ui->statusBar->showMessage( theGame.Save(), 5000);
+		QString file = QFileDialog::getSaveFileName(this,"Save Game", "", "Save files (*.sav)");
+		ui->statusBar->showMessage( theGame.Save(file), 5000);
 	} else if(Text == "load"){
-		QString msg = theGame.Load();
+		QString file = QFileDialog::getOpenFileName(this,"Save Game", "", "Save files (*.sav)");
+		QString msg = theGame.Load(file);
 //		ui->playerInventory->setModel(theGame.playerInvenModel());
 		ui->playerInventory->setModel(theGame.thePlayer.inven.model);
 		updateLocation();

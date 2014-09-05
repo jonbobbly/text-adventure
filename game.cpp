@@ -83,9 +83,9 @@ QString Game::curDescription()
 }
 
 
-QString Game::Save()
+QString Game::Save(QString fileName)
 {
-	QFile file("/home/jonathon/test.sav");
+	QFile file(fileName);
 	if(!file.open(QIODevice::WriteOnly)){
 		return "Could not open file!";
 	} else {
@@ -103,9 +103,9 @@ QString Game::Save()
 	return "Saved";
 }
 
-QString Game::Load()
+QString Game::Load(QString fileName)
 {
-	QFile file("/home/jonathon/test.sav");
+	QFile file(fileName);
 	if(!file.open(QIODevice::ReadOnly)){
 		return "Could not open file!";
 	} else {
@@ -122,6 +122,7 @@ QString Game::Load()
 		}
 		file.flush();
 		file.close();
+		thePlayer.setLocation(thePlayer.Location, &theAreas);
 	}
 	return "Loaded";
 }

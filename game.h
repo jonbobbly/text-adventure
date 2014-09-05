@@ -9,8 +9,8 @@ class Game
 {
 	public:
 		Game();
-		QString Save();
-		QString Load();
+		QString Save(QString fileName);
+		QString Load(QString fileName);
 
 		QString parseWorldInput(QString text);
 		QString parseInvenInput(QString text);
