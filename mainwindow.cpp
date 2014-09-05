@@ -38,45 +38,6 @@ void MainWindow::updateLocation()
 	ui->roomOutput->setText(theGame.curDescription());
 }
 
-void MainWindow::on_worldInput_returnPressed()
-{
-	QString Text = ui->worldInput->text();
-	ui->worldInput->setText("");
-	if(Text == "inventory"){
-		ui->stackedWidget->setCurrentIndex(MainWindow::INVENTORY);
-		ui->invenInput->setFocus();
-	} else if(Text == "save"){
-		QString file = QFileDialog::getSaveFileName(this,"Save Game", "", "Save files (*.sav)");
-		ui->statusBar->showMessage( theGame.Save(file), 5000);
-	} else if(Text == "load"){
-		QString file = QFileDialog::getOpenFileName(this,"Save Game", "", "Save files (*.sav)");
-		QString msg = theGame.Load(file);
-//		ui->playerInventory->setModel(theGame.playerInvenModel());
-		ui->playerInventory->setModel(theGame.thePlayer.inven.model);
-		updateLocation();
-		ui->statusBar->showMessage( msg, 5000);
-	} else if (Text == "quit"){
-		close();
-	} else {
-		ui->statusBar->showMessage( theGame.parseWorldInput(Text), 5000 );
-		if(theGame.thePlayer.hasMoved()){
-			updateLocation();
-		}
-	}
-}
-
-void MainWindow::on_invenInput_returnPressed()
-{
-	QString Text = ui->invenInput->text();
-	ui->invenInput->setText("");
-	if(Text == "cancel"){
-		ui->stackedWidget->setCurrentIndex(MainWindow::WORLD);
-		ui->worldInput->setFocus();
-	} else {
-		ui->statusBar->showMessage( theGame.parseInvenInput(Text), 5000 );
-	}
-}
-
 void MainWindow::on_playerInventory_clicked(const QModelIndex &index)
 {
 	QString selectedItem = index.data().toString();
@@ -132,10 +93,14 @@ void MainWindow::on_btnSave_clicked()
 
 void MainWindow::on_btnLoad_clicked()
 {
-		QString file = QFileDialog::getOpenFileName(this,"Save Game", "", "Save files (*.sav)");
-		QString msg = theGame.Load(file);
-		ui->playerInventory->setModel(theGame.playerInvenModel());
-		//ui->playerInventory->setModel(theGame.thePlayer.inven.model);
-		updateLocation();
-		ui->statusBar->showMessage( msg, 5000);
+	QString file = QFileDialog::getOpenFileName(this,"Save Game", "", "Save files (*.sav)");
+	QString msg = theGame.Load(file);
+	ui->playerInventory->setModel(theGame.playerInvenModel());
+	updateLocation();
+	ui->statusBar->showMessage( msg, 5000);
+}
+
+void MainWindow::on_btnBack_clicked()
+{
+	ui->stackedWidget->setCurrentIndex(MainWindow::WORLD);
 }

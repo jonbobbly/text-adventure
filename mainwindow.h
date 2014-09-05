@@ -19,8 +19,6 @@ class MainWindow : public QMainWindow
 		enum Screen {WORLD = 0, INVENTORY};
 
 	private slots:
-		void on_worldInput_returnPressed();
-		void on_invenInput_returnPressed();
 		void on_playerInventory_clicked(const QModelIndex &index);
 		void on_playerInventory_doubleClicked(const QModelIndex &index);
 		void updateLocation();
@@ -40,6 +38,8 @@ class MainWindow : public QMainWindow
 		void on_btnSave_clicked();
 
 		void on_btnLoad_clicked();
+
+		void on_btnBack_clicked();
 
 	private:
 		Ui::MainWindow *ui;
