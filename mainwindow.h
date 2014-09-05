@@ -27,6 +27,14 @@ class MainWindow : public QMainWindow
 
 		void on_areaInventory_doubleClicked(const QModelIndex &index);
 
+		void on_btnNorth_clicked();
+
+		void on_btnWest_clicked();
+
+		void on_btnSouth_clicked();
+
+		void on_btnEast_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 		Game theGame;

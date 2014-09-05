@@ -94,3 +94,27 @@ void MainWindow::on_areaInventory_doubleClicked(const QModelIndex &index)
 {
 	ui->statusBar->showMessage(theGame.take(index.data().toString()), 5000);
 }
+
+void MainWindow::on_btnNorth_clicked()
+{
+	ui->statusBar->showMessage( theGame.parseWorldInput("north"), 5000 );
+	if(theGame.thePlayer.hasMoved()) updateLocation();
+}
+
+void MainWindow::on_btnWest_clicked()
+{
+	ui->statusBar->showMessage( theGame.parseWorldInput("west"), 5000 );
+	if(theGame.thePlayer.hasMoved()) updateLocation();
+}
+
+void MainWindow::on_btnSouth_clicked()
+{
+	ui->statusBar->showMessage( theGame.parseWorldInput("south"), 5000 );
+	if(theGame.thePlayer.hasMoved()) updateLocation();
+}
+
+void MainWindow::on_btnEast_clicked()
+{
+	ui->statusBar->showMessage( theGame.parseWorldInput("east"), 5000 );
+	if(theGame.thePlayer.hasMoved()) updateLocation();
+}

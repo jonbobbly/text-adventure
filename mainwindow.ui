@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>771</width>
-    <height>480</height>
+    <height>445</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,6 +64,41 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QLineEdit" name="worldInput"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btnNorth">
+            <property name="text">
+             <string>North</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEast">
+            <property name="text">
+             <string>East</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSouth">
+            <property name="text">
+             <string>South</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnWest">
+            <property name="text">
+             <string>West</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
